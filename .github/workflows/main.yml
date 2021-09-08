@@ -28,4 +28,5 @@ jobs:
         uses: tailscale/tailscale-deploy-github@main
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          version: 1.7.359
 
