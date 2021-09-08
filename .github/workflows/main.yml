@@ -34,4 +34,6 @@ jobs:
         id: ssh
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
+        run: |
+          echo $SSH_KEY
 
