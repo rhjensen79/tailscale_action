@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Tailscale_action
 
 # Controls when the workflow will run
 on:
@@ -30,4 +30,4 @@ jobs:
           curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list
           sudo apt update -y
           sudo apt-get install tailscale -y
-          tailscale up
+          sudo tailscale up
