@@ -34,5 +34,5 @@ jobs:
 
       - name: Ping Tailscale network
         run: |
-          ping 100.102.77.116
+          ping 100.102.77.116 -t 10
 
