@@ -34,6 +34,6 @@ jobs:
 
       - name: Ping Tailscale network
         run: |
-          apt install inetutils-ping -y
+          apt-get install inetutils-ping -y
           sudo ping 100.102.77.116 -t 10
 
