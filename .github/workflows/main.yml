@@ -23,17 +23,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
-      - name: Install Tailscale
-        run: |
-          echo Instal Tailscale
-          curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
-          curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-          sudo apt update -y
-          sudo apt-get install tailscale -y
-          sudo tailscale up --authkey ${{ secrets.TAILSCALE_AUTHKEY }}
-
-      - name: Ping Tailscale network
-        run: |
-          sudo apt-get install inetutils-ping -y
-          sudo ping 100.102.77.116 -t 10
+      - name: Setup Tailscale
+        id: tailscale
+        uses: tailscale/tailscale-deploy-github@main
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
