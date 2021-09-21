@@ -36,3 +36,9 @@ jobs:
         mkdir -p ~/.ssh
         printf "%s" "$SSH_KEY" > ~/.ssh/key
         chmod 600 ~/.ssh/key
+
+    - name: Connect
+      id: connect
+      run: |
+        ssh-keyscan -H 192.168.100.11 >> ~/.ssh/known_hosts
+        ssh -i ~/.ssh/key "root@192.168.100.11" "ls"
