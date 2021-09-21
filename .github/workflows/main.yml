@@ -23,12 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a set of commands using the runners shell
-      - name: Setup Tailscale
-        id: tailscale
-        uses: tailscale/tailscale-deploy-github@main
-        with:
-          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-          #version: 1.7.359
+      - name: Tailscale
+        uses: tailscale/github-action@v1
+          with:
+            authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
       
       - name: add SSH key
         id: ssh
