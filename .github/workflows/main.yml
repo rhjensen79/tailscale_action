@@ -28,21 +28,23 @@ jobs:
       with:
         authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-    - name: Add SSH key
-      id: ssh
-      env:
-        SSH_KEY: ${{ secrets.SSH_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        printf "%s" "$SSH_KEY" > ~/.ssh/key
-        chmod 600 ~/.ssh/key
+    - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+      with:
+        ssh-private-key: ${{ secrets.SSH_KEY }}
+        ssh-host: 192.168.100.11
 
-    - name: Connect
-      id: connect
-      run: | 
-        cat ~/.ssh/key
 
 
 #ssh-keyscan -H 192.168.100.11 >> ~/.ssh/known_hosts
 #sudo cat  ~/.ssh/known_hosts
 #sudo ssh -i ~/.ssh/key "root@192.168.100.11" "ls"
+
+
+#    - name: Add SSH key
+#      id: ssh
+#      env:
+#        SSH_KEY: ${{ secrets.SSH_KEY }}
+#      run: |
+#        mkdir -p ~/.ssh
+#        printf "%s" "$SSH_KEY" > ~/.ssh/key
+#        chmod 600 ~/.ssh/key
