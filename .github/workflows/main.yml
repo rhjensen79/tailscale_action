@@ -40,5 +40,7 @@ jobs:
     - name: Connect
       id: connect
       run: |
+        sudo apt-get update -y
+        sudo apt-get install ssh -y
         sudo ssh-keyscan -H 192.168.100.11 >> ~/.ssh/known_hosts
         sudo ssh -i ~/.ssh/key "root@192.168.100.11" "ls"
