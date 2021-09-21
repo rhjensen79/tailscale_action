@@ -28,15 +28,11 @@ jobs:
       with:
         authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-    - name: add SSH key
+    - name: Add SSH key
       id: ssh
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}
       run: |
-        echo $SSH_KEY
-
-    - name: Test_Tailscale
-      run: |
-        sudo apt-get update
-        sudo apt-get install traceroute -y
-        sudo traceroute 192.168.100.2
+        mkdir -p ~/.ssh
+        printf "%s" "$SSH_KEY" > ~/.ssh/key
+        chmod 600 ~/.ssh/key
