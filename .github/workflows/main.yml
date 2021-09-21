@@ -37,7 +37,6 @@ jobs:
 
     - name: Test_Tailscale
       run: |
-        sudo apt-get update && apt-get install net-tools -y
+        sudo apt-get update
+        apt-get install net-tools -y
         sudo traceroute 192.168.100.2
-
-
